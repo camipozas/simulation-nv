@@ -30,7 +30,7 @@ def crear_notas(notas_de_venta,productos):
     tuples = []
 
     for nota in range(notas_de_venta):
-        n_productos = random.randint(1,30)
+        n_productos = random.randint(1,50)
         productos = random.choices(df_ingreso.to_numpy(), k=n_productos)
         rows = []
         temp_tuples = []
