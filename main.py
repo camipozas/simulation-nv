@@ -6,6 +6,6 @@ productos = 25000
 
 print("iniciando!")
 df_notas = crear_notas(notas_de_venta,productos)
-display(df_notas)
+print(df_notas)
 
 model = modelo(df_notas)
