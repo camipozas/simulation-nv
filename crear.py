@@ -12,7 +12,7 @@ def crear_productos():
 def crear_inventario():
   data = []
   for i in range(25000):
-    valor = random.randint(1,2500)
+    valor = random.randint(0,2500)
     data.append([str(i+1), valor])
   return pd.DataFrame(data, columns=["id_prod", "inventario"])
 
