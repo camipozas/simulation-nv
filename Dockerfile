@@ -10,3 +10,4 @@ ADD . .
 
 ENTRYPOINT ["python"]
 CMD ["main.py"]
+
