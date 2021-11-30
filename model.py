@@ -21,8 +21,7 @@ def modelo(df_notas):
     model = LpProblem("Supply-Demand-Problem", LpMaximize)
 
     # Funcion Objetivo
-
-    model += lpSum([cant_unidades[id_nota, id_producto] * df_notas.loc[(id_nota,id_producto),'precio_prod'].sum() for id_nota, id_producto in df_notas.index])
+    model += (lpSum([cant_unidades[id_nota, id_producto] * df_notas.loc[(id_nota,id_producto),'precio_prod'].sum() for id_nota, id_producto in df_notas.index]))
 
     # Restricciones
     # (1) Inventario disponible:
@@ -33,15 +32,12 @@ def modelo(df_notas):
     model += lpSum([cant_unidades[id_nota, id_producto] <=  nota_completa[id_nota, id_producto] * df_notas.loc[(id_nota, id_producto), 'cantidad'].sum() for id_nota, id_producto in df_notas.index]) 
     model += lpSum([cant_unidades[id_nota, id_producto] <=  nota_modificada[id_nota, id_producto] * df_notas.loc[(id_nota, id_producto), 'cantidad'].sum() for id_nota, id_producto in df_notas.index]) 
 
-    # (3)	Si la nota de venta está completa entonces no se modifica:
-    model += lpSum([nota_completa[id_nota, id_producto] <=  1 - nota_modificada[id_nota, id_producto] for id_nota, id_producto in df_notas.index]) 
+    # (3) Si la nota de venta está completa entonces no se modifica:
+   # model += lpSum([nota_completa[id_nota, id_producto] <=  1 - nota_modificada[id_nota, id_producto] for id_nota, id_producto in df_notas.index]) 
 
     # (4)	Si la nota fue modificada, no se realiza nuevamente:
-    model += lpSum([nota_modificada[id_nota, id_producto] for id_nota, id_producto in df_notas.index]) == 1
+    #model += lpSum([nota_modificada[id_nota, id_producto] for id_nota, id_producto in df_notas.index]) == 1
     
     # Resuelve
     model.solve()
     LpStatus[model.status]
-
-    # Optimo
-    print(model.objective)
