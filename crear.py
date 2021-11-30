@@ -5,7 +5,7 @@ import numpy as np
 def crear_productos():
   data = []
   for i in range(25000):
-    valor = random.randint(1,3500) * 100
+    valor = random.randint(1,5000) * 100
     data.append([str(i+1), valor])
   return pd.DataFrame(data, columns=["id_prod", "ingreso"])
 

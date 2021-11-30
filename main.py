@@ -1,7 +1,7 @@
 from crear import crear_notas
 from model import modelo
 
-notas_de_venta = 1600
+notas_de_venta = 2000
 productos = 25000
 
 print("iniciando!")
