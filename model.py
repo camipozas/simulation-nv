@@ -34,4 +34,5 @@ def modelo(df_notas):
     # Resuelve
     print("status:", str(LpStatus[model.status]))
     model.solve()
-    print("objetivo:", value(model.objective))
+    print("objetivo:", round(value(model.objective)))
+    
