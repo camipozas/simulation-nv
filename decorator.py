@@ -1,4 +1,5 @@
 import functools
+import time
 
 # Creamos un decorador que nos ayude a medir el tiempo de ejecución
 # Sin tener que escribirlo para cada función
@@ -13,3 +14,12 @@ def log(func):
         print(f"Terminó función {func.__name__!r}")
         return value
     return wrapper
+
+def mide_tiempo(funcion):
+    def funcion_medida(*args, **kwargs):
+        inicio = time.time()
+        c = funcion(*args, **kwargs)
+        duration = round(time.time() - inicio)
+        print(duration)
+        return c
+    return funcion_medida
