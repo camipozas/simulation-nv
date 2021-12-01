@@ -15,6 +15,7 @@ def log(func):
         return value
     return wrapper
 
+#  código basado en https://ellibrodepython.com/tiempo-ejecucion-python
 def mide_tiempo(funcion):
     def funcion_medida(*args, **kwargs):
         inicio = time.time()
